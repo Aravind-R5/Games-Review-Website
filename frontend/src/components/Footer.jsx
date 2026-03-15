@@ -7,7 +7,7 @@
 
 import { Link } from 'react-router-dom';
 import { FiGithub, FiTwitter, FiInstagram, FiMail } from 'react-icons/fi';
-import { GiGamepad } from 'react-icons/gi';
+import { IoGameController } from 'react-icons/io5';
 
 function Footer() {
   return (
@@ -17,7 +17,7 @@ function Footer() {
           {/* Brand & Description */}
           <div className="col-lg-4 mb-4 mb-lg-0">
             <div className="footer-brand d-flex align-items-center gap-2">
-              <GiGamepad size={24} />
+              <IoGameController size={28} />
               <span>GameVault</span>
             </div>
             <p className="footer-text">

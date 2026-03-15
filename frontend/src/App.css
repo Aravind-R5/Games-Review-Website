@@ -1065,12 +1065,22 @@ a:hover {
 }
 
 .footer-brand {
-  font-size: 1.3rem;
-  font-weight: 800;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 1.5rem;
+  font-weight: 850;
+  color: var(--accent-green) !important;
+  letter-spacing: -0.5px;
+  display: flex !important;
+  align-items: center;
+  gap: 10px !important;
+}
+
+.footer-brand svg {
+  color: #fff;
+  background: linear-gradient(135deg, #f5c518 0%, #ff8c00 100%);
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  font-size: 1.8rem;
 }
 
 .footer-text {

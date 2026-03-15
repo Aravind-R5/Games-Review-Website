@@ -35,6 +35,8 @@ class GameSerializer(serializers.ModelSerializer):
     """Serializes Game data for list and detail views."""
     review_count = serializers.SerializerMethodField()
     platform_display = serializers.CharField(source='get_platform_display', read_only=True)
+    poster_url = serializers.SerializerMethodField()
+    backdrop_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Game
@@ -44,6 +46,26 @@ class GameSerializer(serializers.ModelSerializer):
             'developer', 'platform', 'platform_display',
             'is_featured', 'review_count', 'created_at'
         ]
+
+    def _get_absolute_url(self, url):
+        if not url:
+            return ''
+        if url.startswith('http'):
+            return url
+        
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(url)
+        
+        # Fallback if no request context
+        render_url = "https://games-review-website-api.onrender.com"
+        return f"{render_url}{url}"
+
+    def get_poster_url(self, obj):
+        return self._get_absolute_url(obj.poster_url)
+
+    def get_backdrop_url(self, obj):
+        return self._get_absolute_url(obj.backdrop_url)
 
     def get_review_count(self, obj):
         """Count total reviews for this game."""
@@ -70,8 +92,20 @@ class ReviewSerializer(serializers.ModelSerializer):
         ]
 
     def get_item_poster(self, obj):
-        """Get poster URL from the related game."""
-        return obj.game.poster_url if obj.game else ''
+        """Get absolute poster URL from the related game."""
+        if not obj.game or not obj.game.poster_url:
+            return ''
+        
+        url = obj.game.poster_url
+        if url.startswith('http'):
+            return url
+            
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(url)
+            
+        render_url = "https://games-review-website-api.onrender.com"
+        return f"{render_url}{url}"
 
     def get_item_title(self, obj):
         """Get title from the related game."""

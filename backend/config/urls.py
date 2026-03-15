@@ -13,6 +13,5 @@ urlpatterns = [
     path('api/', include('api.urls')),  # All API routes
 ]
 
-# Serve media files during development
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Serve media files (Always serve since they are in the GitHub repo)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

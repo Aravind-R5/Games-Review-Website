@@ -12,7 +12,6 @@ backend/venv/
 
 # Django
 backend/staticfiles/
-backend/media/
 
 # Node
 frontend/node_modules/

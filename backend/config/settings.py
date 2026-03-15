@@ -114,6 +114,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Tell WhiteNoise to also serve the media folder
+WHITENOISE_ROOT = os.path.join(BASE_DIR, 'media')
+
 # WhiteNoise storage for compressed/cached static files
 STORAGES = {
     "default": {

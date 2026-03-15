@@ -134,6 +134,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # For development only
 if os.environ.get('ALLOWED_ORIGINS'):
     CORS_ALLOW_ALL_ORIGINS = False
     CORS_ALLOWED_ORIGINS = os.environ.get('ALLOWED_ORIGINS').split(',')
+    CORS_ALLOW_CREDENTIALS = True  # Allow sessions/cookies for admin
 
 # -----------------------------------------------
 # Django REST Framework Configuration

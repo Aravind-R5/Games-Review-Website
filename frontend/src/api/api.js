@@ -7,9 +7,9 @@
 
 import axios from 'axios';
 
-// Create an Axios instance with default config
+// Use environment variable for production, default to /api for local development proxy
 const API = axios.create({
-  baseURL: '/api',  // Vite proxy forwards this to Django
+  baseURL: import.meta.env.VITE_API_URL || '/api',
   headers: {
     'Content-Type': 'application/json',
   },

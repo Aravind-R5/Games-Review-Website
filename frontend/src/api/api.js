@@ -8,8 +8,15 @@
 import axios from 'axios';
 
 // Use environment variable for production, default to /api for local development proxy
+let baseURL = import.meta.env.VITE_API_URL || '/api';
+
+// Smart check: If it's a full URL and missing /api suffix, add it automatically
+if (baseURL.startsWith('http') && !baseURL.includes('/api')) {
+  baseURL = baseURL.replace(/\/$/, '') + '/api';
+}
+
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: baseURL,
   headers: {
     'Content-Type': 'application/json',
   },

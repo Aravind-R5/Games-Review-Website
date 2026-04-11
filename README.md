@@ -2,6 +2,8 @@
 
 A premium, full-stack **Gaming Review Platform** built with Django and React, designed for gaming enthusiasts to explore everything from Triple-A blockbusters to Hidden Indie Gems.
 
+> ⚠️ **Note:** The backend is hosted on Render's free tier. On the first visit, it may take **30–60 seconds** to load data due to a cold start. Thank you for your patience!
+
 ⚡ **Tech Stack**
 
 | Layer | Technology |
